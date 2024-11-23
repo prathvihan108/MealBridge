@@ -34,6 +34,11 @@ app.get("/donate", (req, res) => {
 	res.send("donate page");
 });
 
+//dashboard route
+app.get("/dashboard", (req, res) => {
+	res.render("dashboard.ejs");
+});
+
 //food bank
 app.get("/foodbank", (req, res) => {
 	res.send("food bank page");

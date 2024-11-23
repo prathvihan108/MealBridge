@@ -1,0 +1,209 @@
+*{
+
+    padding: 0px;
+    margin:0px;
+
+}
+
+body {
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+	font-family: "Arial", sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: black;
+}
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+ 
+
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+.navbar{
+
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #007bff;
+    height: fit-content;
+}
+
+.logo {
+	width: 80px; /* Reduced size for responsiveness */
+	height: 80px;
+	margin: 10px 10px;
+	border-radius: 50%;
+	border: 2px solid white;
+	object-fit: cover;
+}
+
+.navbar button {
+    padding: 5px 5px; /* Adjust space around content */
+    font-size: 20px;
+    
+    cursor: pointer;
+    background-color: #000000; /* Button background color */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    transition: background-color 0.3s ease; /* Hover effect */
+    text-align: center;
+
+    /* Flexbox properties */
+    display: flex;
+    align-items: center; /* Vertical alignment */
+    justify-content: center; /* Horizontal alignment */
+    height: fit-content; /* Allow content to define height */
+    width: fit-content; /* Adjust width to content */
+  }
+  
+  .navbar button:hover {
+    background-color: #e55347; /* Darker shade on hover */
+  }
+
+  .navbar h2{
+    font-size: 50px;
+    font-weight: 1000;
+    font-family: cursive;
+    font-style: oblique;
+  }
+
+  .dash-grid{
+    display: grid;
+    width: 80vw;
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background-color: rgb(0, 0, 0);
+    justify-content: center;
+    justify-items: center;
+    align-items: center; 
+    align-content: center;
+    margin: 0 auto; /* Horizontally centers the container */
+    border-radius: 20px;
+    padding: 5px;
+ 
+    
+  }
+
+
+  .box{
+    height: 250px;
+    width: 480px;
+    border: #007bff;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+   
+  }
+
+  .box:hover {
+    transform: scale(1.05); /* Slightly enlarges the box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
+}
+
+.box-container h2{
+    color: white;
+}
+  #b1{
+    background-image: url(/images/donate.jpg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+  }
+  #b2{
+    background-image: url(/images/receive.jpg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+  }
+  #b3{
+    background-image: url(/images/inventory.jpg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+  }
+  #b4{
+    background-image: url(/images/fertilizer.jpg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+  }
+
+  h2{
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .info-grid{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 3fr 0.5fr 0.1fr;
+    color: white;
+    justify-content: center;
+    justify-items: center;
+    align-items: center; 
+    align-content: center;
+    margin: 0 auto; /* Horizontally centers the container */
+    border-radius: 20px;
+    padding: 2px;
+    text-align: center;
+    column-gap: 5px;
+
+
+
+  }
+
+  .info-box{
+    height: 350px;
+    width: 250px;
+    border-radius: 20px;
+  }
+  #info-box1{
+    background-image:url(/images/donate1.jpg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+
+  }
+  #info-box2{
+    background-image: url(/images/inventory1.jpg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+
+  }
+  #info-box3{
+    background-image: url(/images/communication.jpg);
+    background-size: cover; /* Ensures the image fills the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+
+  }
+  .info-title{
+    font-size: x-large;
+    text-align: center;
+  }
+  .info-text{
+    
+    font-size: medium;
+    text-align: center;
+    padding: 0px 20px;
+
+  }
+  
