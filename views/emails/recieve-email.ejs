@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Donation Accepted</title>
+	</head>
+	<body>
+		<h2>Dear <%= reciverName %>,</h2>
+		<h3>
+			This mail is sent to inform you that you have accepted foodDonation from
+			Donar: -<%= package.donar.name %>, and the package ID: -<%=package.id %>.
+			<br />
+			<a
+				href="https://www.google.com/maps?q=<%=package.geometry.coordinates[1]%>,<%=package.geometry.coordinates[0]%>"
+				>Click here to get Donar Location</a
+			>
+		</h3>
+		<hr />
+		<h3>Products Details:</h3>
+		<table border="1" style="border-radius: 2px">
+			<thead>
+				<tr>
+					<th>Item Name</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% package.products.forEach(product => { %>
+				<tr>
+					<td><%= product.itemName %></td>
+					<td><%= product.quantity %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table>
+		<hr />
+		<h4>Thanks for Accepting the Donation!</h4>
+		<h4>Thanks & Regards,</h4>
+		<h4>MealBridge</h4>
+		<h4><%=senderEmail %></h4>
+	</body>
+</html>

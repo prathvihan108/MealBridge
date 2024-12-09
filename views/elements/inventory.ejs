@@ -1,38 +1,77 @@
 <% layout("/layouts/boilerPlateNew.ejs") -%>
 <link rel="stylesheet" href="/elements/inventory.css" />
+<link rel="stylesheet" href="/elements/recieve.css" />
 <body>
 	<div class="container">
 		<h2>Available Donations</h2>
 		<div class="row">
-			<div class="col-md-8">
-				<% for(let package of packages) {%> <% if( !package.accepted){ %>
-				<div class="card p-4 mb-3">
-					<div class="d-flex justify-content-between mt-3 custom-borders">
-						<div>
-							<h5><%=package.donar.username %></h5>
-							<% for(let product of package.products){ %> <%
-							if(!product.expired){ %>
-							<p><%=product.itemName %></p>
-							<% } %> <% } %>
+			<div class="row col-md-6 recieve-container">
+				<% let index=1; %> <% for(const package of packages) {%> <% if(
+				!package.accepted){ %>
+				<div class="col-12">
+					<div class="card p-4 mb-3 bookBtnClass" data-book-index="<%=index %>">
+						<!-- Username and Info Icon -->
+						<%- include("../elements/map.ejs", {package ,index}) %>
+						<h5 class="mb-0"><%= package.donar.username %></h5>
+						<!-- Item Names and Quantities -->
+						<div class="d-flex justify-content-between mt-3">
+							<div>
+								<% for (let product of package.products) { %> <% if
+								(!product.expired) { %>
+								<p class="mb-1"><%= product.itemName %></p>
+								<% } %> <% } %>
+							</div>
+							<div class="text-end">
+								<% for (let product of package.products) { %> <% if
+								(!product.expired) { %>
+								<p class="mb-1"><%= product.quantity %></p>
+								<% } %> <% } %>
+							</div>
 						</div>
-						<div class="text-end">
-							<br />
-							<% for (let product of package.products) { %> <%
-							if(!product.expired){ %>
-							<p><%= product.quantity %></p>
-							<% } %> <% } %>
+
+						<!-- Submit Button -->
+						<div class="text-end mt-3">
 							<form
+								id="bookForm<%=index%>"
 								action="/foodbank/<%= package._id %>?_method=delete"
 								method="POST"
 							>
-								<button class="btn btn-success">Accept Donation</button>
+								<input
+									name="foodBank"
+									type="text"
+									value="<%=foodBank%>"
+									hidden
+								/>
+								<button
+									type="button"
+									class="btn btn-success"
+									id="bookButton<%=index%>"
+								>
+									Book
+								</button>
 							</form>
 						</div>
 					</div>
 				</div>
-				<% }%> <% } %>
+				<!-- Confirmation Popup -->
+				<div id="confirmationPopup<%=index%>" class="popup">
+					<p>Are you sure you want to book this package?</p>
+					<div class="d-flex justify-content-between mt-3">
+						<button id="confirmButton<%=index%>" class="btn btn-success">
+							Confirm
+						</button>
+						<button id="cancelButton<%=index%>" class="btn btn-danger">
+							Cancel
+						</button>
+					</div>
+				</div>
+
+				<!-- Overlay for Popup -->
+				<div id="popupOverlay<%=index%>" class="overlay"></div>
+				<% index++; %> <% }%> <% } %>
 			</div>
-			<div class="col-md-4">
+			<script src="/JS/recieve.js"></script>
+			<div class="col-md-6">
 				<div class="quick-stats">
 					<div class="card mb-3">
 						<div class="card-body">
@@ -94,3 +133,7 @@
 		</div>
 	</div>
 </body>
+<script>
+	const mapToken = "<%= process.env.MAP_TOKEN %>";
+</script>
+<script src="/JS/map.js"></script>

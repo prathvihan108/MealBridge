@@ -9,8 +9,8 @@ module.exports.signUpFormRender = async (req, res) => {
 
 module.exports.signUp = async (req, res, next) => {
 	try {
-		let { password, username, email, phoneNo } = req.body;
-		let newUser = new User({ email, username, phoneNo });
+		let { name, password, username, email, phoneNo } = req.body;
+		let newUser = new User({ name, email, username, phoneNo });
 		let registedUser = await User.register(newUser, password);
 		req.login(registedUser, (err) => {
 			if (err) {
@@ -47,11 +47,11 @@ module.exports.logout = (req, res, next) => {
 };
 
 module.exports.adminLogin = (req, res) => {
-	let { password } = req.body;
+	let { password, foodbank } = req.body;
 	// console.log(password, " ", process.env.ADMIN_PASSWORD);
 	if (password == process.env.ADMIN_PASSWORD) {
 		req.flash("success", "Admin LoggedIn Succesfully!");
-		res.redirect("/foodbank");
+		res.redirect(`/foodbank?foodbank=${foodbank}`);
 	} else {
 		req.flash("error", "Wrong Admin Password");
 		res.redirect("/dashboard");

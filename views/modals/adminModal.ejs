@@ -24,11 +24,10 @@
 							<div class="mb-3 row">
 								<div class="col-md-6 mb-2">
 									<label for="category" class="form-category">FoodBank</label>
-									<select name="fbId" class="form-select" required>
+									<select name="foodbank" class="form-select" required>
 										<option aria-selected="false">Select FoodBank</option>
-
 										<% for(let fb of foodbanks){ %>
-										<option value="<%= fb._id %>"><%= fb.title %></option>
+										<option value="<%= fb.title %>"><%= fb.title %></option>
 										<% } %>
 									</select>
 								</div>

@@ -33,7 +33,8 @@
 	<body>
 		<%- include("../includes/navbar.ejs") %>
 		<div class="container">
-			<%- include("../includes/alert.ejs") %><%- body -%>
+			<%- include("../includes/alert.ejs") %><%- include("../modals/model.ejs")
+			%><%- body -%>
 		</div>
 		<%- include("../includes/footer.ejs") %>
 		<script

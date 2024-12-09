@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Donation Accepted</title>
-</head>
-<body>
-  <p>Dear <%= individualName %>,</p>
-  <p>This mail is sent to inform you that your donation has been successfully accepted by <%= foodbankName %>.<p>
-
-  <p>Products Details:</p>
-  <% products.forEach(product => { %>
-    <p><%= product.name %> - <%= product.quantity %></p>
-  <% }); %>
-
-  <p>Thanks for donating food!</p>
-  <p>Thanks & Regards,</p>
-  <p>MealBridge</p>
-  <p><%= senderEmail %></p>
-</body>
+	<head>
+		<title>Donation Accepted</title>
+	</head>
+	<body>
+		<h2>Dear <%= individualName %>,</h2>
+		<h3>
+			This mail is sent to inform you that your donation has been successfully
+			accepted by <%= AcceptedBy %>.
+		</h3>
+		<hr />
+		<h3>Products Details:</h3>
+		<table border="1" style="border-radius: 2px; font-size: 10px">
+			<thead>
+				<tr>
+					<th>Item Name</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% products.forEach(product => { %>
+				<tr>
+					<td><%= product.itemName %></td>
+					<td><%= product.quantity %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table>
+		<hr />
+		<h4>Thanks for donating food!</h4>
+		<h4>Thanks & Regards,</h4>
+		<h4>MealBridge</h4>
+		<h4><%=senderEmail %></h4>
+	</body>
 </html>

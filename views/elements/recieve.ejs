@@ -11,7 +11,8 @@
 				<div class="card p-4 mb-3 bookBtnClass" data-book-index="<%=index %>">
 					<!-- Username and Info Icon -->
 					<%- include("../elements/map.ejs", {package ,index}) %>
-					<h5 class="mb-0"><%= package.donar.username %></h5>
+					<h5 class="mb-1"><%= package.donar.name %></h5>
+					<p class="mb-1"><%= package.donar.email %></p>
 					<!-- Item Names and Quantities -->
 					<div class="d-flex justify-content-between mt-3">
 						<div>
@@ -35,6 +36,7 @@
 							action="/foodbank/<%= package._id %>?_method=delete"
 							method="POST"
 						>
+							<% if(!package.donar._id.equals(currentUser._id)){ %>
 							<button
 								type="button"
 								class="btn btn-success"
@@ -42,6 +44,7 @@
 							>
 								Book
 							</button>
+							<% } %>
 						</form>
 					</div>
 				</div>
