@@ -13,7 +13,6 @@ bookPackages.forEach((bookPackage) => {
 
 		// Show Popup
 		bookButton.addEventListener("click", () => {
-			console.log(index);
 			confirmationPopup.style.display = "block";
 			popupOverlay.style.display = "block";
 		});

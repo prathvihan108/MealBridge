@@ -1,40 +1,88 @@
 <%- layout("/layouts/boilerPlateNew.ejs") %>
 <link rel="stylesheet" href="/elements/fertilizer.css" />
-
 <body>
 	<div class="wrapper d-flex flex-column min-vh-100">
 		<div class="container mt-3">
 			<h2>Available Manures</h2>
 			<div class="row">
+				<% if(products.length){ %>
 				<div class="col-md-8">
-					<% for(let fb of foodbanks) {%> <% if(fb.products.length!=0){ %>
 					<div class="card p-4 mb-3">
-						<div class="d-flex justify-content-between mt-3 custom-borders">
-							<div>
-								<h5><%=fb.title %></h5>
-								<% for(let product of fb.products){ %> <% if(product.expired){
-								%>
-								<p><%=product.itemName %></p>
-								<% } %> <% } %>
+						<b style="font-weight: 500"
+							>MealBridge ensures zero waste by converting unutilized or
+							undonated food into nutrient-rich manure, promoting sustainability
+							and supporting eco-friendly practices while bridging gaps between
+							donors and food banks.
+						</b>
+						<hr />
+						<form action="/manures" id="bookForm" method="POST">
+							<div class="d-flex justify-content-between mt-3 custom-borders">
+								<div>
+									<% for (const product of products) { %> <% if
+									(product.expired) { %>
+									<p class="mb-1"><%= product.itemName %></p>
+									<% } %> <% } %>
+								</div>
+								<div class="text-end">
+									<% for (const product of products) { %> <% if
+									(product.expired) { %>
+									<div
+										class="form-check d-flex justify-content-between align-items-center mb-1"
+									>
+										<label
+											class="form-check-label"
+											for="product-<%= product._id %>"
+										>
+											<%= product.quantity %>
+										</label>
+										<input
+											type="checkbox"
+											class="form-check-input ms-2"
+											name="selectedProducts[]"
+											value="<%= product._id %>"
+											id="product-<%= product._id %>"
+											style="border: 1px solid black"
+										/>
+									</div>
+									<% } %> <% } %>
+									<button
+										type="submit"
+										class="btn btn-success mt-3"
+										id="bookButton"
+									>
+										Book
+									</button>
+								</div>
 							</div>
-							<div class="text-end">
-								<br />
-								<% for (let product of fb.products) { %> <% if(product.expired){
-								%>
-								<p><%= product.quantity %></p>
-								<% } %> <% } %>
-								<form
-									action="/foodbank/<%= fb._id %>?_method=delete"
-									method="POST"
-								>
-									<button class="btn btn-success">Book</button>
-								</form>
-							</div>
+						</form>
+					</div>
+					<!-- Confirmation Popup -->
+					<div id="confirmationPopup" class="popup">
+						<p>Are you sure you want to book this package?</p>
+						<div class="d-flex justify-content-between mt-3">
+							<button id="confirmButton" class="btn btn-success">
+								Confirm
+							</button>
+							<button id="cancelButton" class="btn btn-danger">Cancel</button>
 						</div>
 					</div>
-					<% }%> <% } %>
+					<!-- Overlay for Popup -->
+					<div id="popupOverlay" class="overlay"></div>
 				</div>
+				<% } else{ %>
+				<div class="col-md-8">
+					<div class="card p-4 mb-3">
+						<h5 class="mb-1">Currently there are no Manures</h5>
+						<div class="text-end mt-3">
+							<a type="button" class="btn btn-success" href="/dashboard"
+								>Go Home!</a
+							>
+						</div>
+					</div>
+				</div>
+				<% } %>
 			</div>
 		</div>
 	</div>
 </body>
+<script src="/JS/fertilizer.js"></script>

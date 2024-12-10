@@ -18,17 +18,6 @@ label {
 .row textarea::placeholder {
 	opacity: 0.5;
 }
-.product-row {
-	display: flex;
-	flex-wrap: wrap; /* Allow wrapping to the next line */
-	gap: 1rem; /* Optional: Add spacing between items */
-	width: 100%; /* Ensure it spans the container */
-}
-
-.product-row > div {
-	flex: 1 1 calc(50% - 1rem); /* Each item takes 50% width minus gap */
-	box-sizing: border-box; /* Include padding/border in width */
-}
 /* Choose Location Button */
 #choose-location-btn {
 	display: flex;

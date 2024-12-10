@@ -70,7 +70,7 @@ main()
 	})
 	.catch((err) => console.log(err));
 
-cron.schedule("0 * * * *", async () => {
+cron.schedule("* * * * *", async () => {
 	console.log("Running daily expiration check...");
 	await markExpiredProducts();
 });

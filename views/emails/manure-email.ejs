@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Manures Claimed Successfully!</title>
+	</head>
+	<body>
+		<h2>Dear <%= reciverName %>,</h2>
+		<h3>
+			This mail has been sent to you to inform that you have claimed the manuers
+			for MealBridge pvt.ltd <br />
+			<br />
+			<a href="https://www.google.com/maps?q=12.959588,77.580376"
+				>Click here to get Location for the Mauers PickUp</a
+			>
+		</h3>
+		<hr />
+		<h3>Products Details:</h3>
+		<table border="1" style="border-radius: 2px; font-size: 17px">
+			<thead>
+				<tr>
+					<th>Manure</th>
+					<th>Quantity</th>
+					<th>Manure ID</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% products.forEach(product => { %>
+				<tr>
+					<td><%= product.itemName %></td>
+					<td><%= product.quantity %></td>
+					<td><%=product._id %></td>
+				</tr>
+				<% }); %>
+			</tbody>
+		</table>
+		<hr />
+		<h4>Thanks for Accepting the Donation!</h4>
+		<h4>Thanks & Regards,</h4>
+		<h4>MealBridge</h4>
+		<h4><%=senderEmail %></h4>
+	</body>
+</html>

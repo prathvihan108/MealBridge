@@ -2,12 +2,12 @@
 	border-radius: 10px;
 }
 
-.card p{
-	font-size: 30px;
-}
+/* .card p {
+	font-size: 25px;
+} */
 
-body{
-	background:linear-gradient(skyblue,lightgreen);
+body {
+	background: linear-gradient(skyblue, lightgreen);
 }
 .badge-pending {
 	background-color: #f0e68c;
@@ -51,6 +51,8 @@ body{
 	border: 5px solid #007b5e;
 	border-radius: 10px;
 }
-.card-large {
-	width: 110%;
+.inventorySpan span {
+	font-size: 1.5rem !important;
+	font-weight: 600 !important;
+	margin: 0 10px !important;
 }

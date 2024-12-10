@@ -5,26 +5,37 @@
 	<div class="container">
 		<h2>Available Donations</h2>
 		<div class="row row-col-xxl-2 recieve-container">
-			<% let index=1; %> <% for(const package of packages) {%> <% if(
-			!package.accepted){ %>
+			<% if(packages.length){ %> <% let index=1; %> <% for(const package of
+			packages) {%> <% if( !package.accepted){ %>
 			<div class="col-md-6">
 				<div class="card p-4 mb-3 bookBtnClass" data-book-index="<%=index %>">
 					<!-- Username and Info Icon -->
 					<%- include("../elements/map.ejs", {package ,index}) %>
 					<h5 class="mb-1"><%= package.donar.name %></h5>
-					<p class="mb-1"><%= package.donar.email %></p>
+					<span class="mb-2"><%= package.donar.email %></span>
 					<!-- Item Names and Quantities -->
 					<div class="d-flex justify-content-between mt-3">
 						<div>
 							<% for (let product of package.products) { %> <% if
 							(!product.expired) { %>
-							<p class="mb-1"><%= product.itemName %></p>
+							<p class="mb-1" style="font-size: 17px; font-weight: bold">
+								<%= product.itemName %>
+							</p>
 							<% } %> <% } %>
 						</div>
 						<div class="text-end">
 							<% for (let product of package.products) { %> <% if
 							(!product.expired) { %>
-							<p class="mb-1"><%= product.quantity %></p>
+							<p class="mb-1" style="font-size: 17px; font-weight: bold">
+								<%= product.quantity %>&nbsp;<span
+									class="mb-1"
+									style="color: lightcoral; font-size: 17px"
+								>
+									Hours:- <%= product.timeLeft.hours %>
+									Minutes:-<%=product.timeLeft.minutes %>
+								</span>
+							</p>
+
 							<% } %> <% } %>
 						</div>
 					</div>
@@ -64,7 +75,18 @@
 
 			<!-- Overlay for Popup -->
 			<div id="popupOverlay<%=index%>" class="overlay"></div>
-			<% index++; %> <% }%> <% } %>
+			<% index++; %> <% }%> <% } %> <% } else{ %>
+			<div class="col-md-6">
+				<div class="card p-4 mb-3">
+					<h5 class="mb-1">Currently there are no Donations</h5>
+					<div class="text-end mt-3">
+						<a type="button" class="btn btn-success" href="/dashboard"
+							>Go Home!</a
+						>
+					</div>
+				</div>
+			</div>
+			<% } %>
 		</div>
 	</div>
 	<script src="/JS/recieve.js"></script>

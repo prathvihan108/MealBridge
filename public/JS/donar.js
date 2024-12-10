@@ -5,64 +5,42 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Function to create a product row
 	function createProductRow(index) {
 		return `
-			<div class="row product-row">
-				<div class="col-md-4">
-					<label for="itemName-${index}" class="form-label">Item ${index}</label>
-					<input
-						id="itemName-${index}"
-						name="products[${index}][itemName]"
-						type="text"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-4">
-					<label for="quantity-${index}" class="form-label">Quantity</label>
-					<input
-						id="quantity-${index}"
-						name="products[${index}][quantity]"
-						type="text"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-4">
-					<label for="expiresAt-${index}" class="form-label">Expires At</label>
-					<input
-						id="expiresAt-${index}"
-						name="products[${index}][expireDate]"
-						type="date"
-						class="form-control"
-						required
-					/>
-				</div>
-				<div class="col-md-4 mt-2">
-					<label for="timer-${index}" class="form-label">Shelf Life</label>
-					<div class="d-flex">
-						<input
-							id="hours-${index}"
-							name="products[${index}][hours]"
-							type="number"
-							min="0"
-							placeholder="Hours"
-							class="form-control me-2"
-							required
-						/>
-						<input
-							id="minutes-${index}"
-							name="products[${index}][minutes]"
-							type="number"
-							min="0"
-							max="59"
-							placeholder="Minutes"
-							class="form-control"
-							required
-						/>
-					</div>
-				</div>
-			</div>
-			<hr class="custom-hr" />
-		`;
+            <div class="row product-row">
+                <div class="mb-3 col-md-4">
+                    <label for="itemName-${index}" class="form-location">Item ${index}</label>
+                    <input
+                        id="itemName-${index}"
+                        name="products[${index}][itemName]"
+                        placeholder=""
+                        type="text"
+                        class="form-control"
+                        required
+                    />
+                </div>
+                <div class="mb-2 col-md-4">
+                    <label for="quantity-${index}" class="form-country">Quantity</label>
+                    <input
+                        id="quantity-${index}"
+                        name="products[${index}][quantity]"
+                        placeholder=""
+                        type="text"
+                        class="form-control"
+                        required
+                    />
+                </div>
+                <div class="mb-2 col-md-4">
+                    <label for="expiresAt-${index}" class="form-country">Expires At</label>
+                    <input
+                        id="expiresAt-${index}"
+                        name="products[${index}][expireDate]"
+                        type="date"
+                        class="form-control"
+                        required
+                    />
+                </div>
+            </div>
+			<hr />`;
+
 	}
 
 	// Event listener to generate rows based on the number input
@@ -156,7 +134,6 @@ selectLoc.addEventListener("click", (e) => {
 	overlay.style.display = "none";
 	mapContainer.style.display = "none";
 	chooseLocationBtn.style.display = "block";
-	alert("hello");
 });
 
 chooseLocationBtn.addEventListener("click", (e) => {

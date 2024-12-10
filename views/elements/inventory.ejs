@@ -6,25 +6,35 @@
 		<h2>Available Donations</h2>
 		<div class="row">
 			<div class="row col-md-6 recieve-container">
-				<% let index=1; %> <% for(const package of packages) {%> <% if(
-				!package.accepted){ %>
+				<% if(packages.length){ %><% let index=1; %> <% for(const package of
+				packages) {%> <% if( !package.accepted){ %>
 				<div class="col-12">
 					<div class="card p-4 mb-3 bookBtnClass" data-book-index="<%=index %>">
 						<!-- Username and Info Icon -->
 						<%- include("../elements/map.ejs", {package ,index}) %>
-						<h5 class="mb-0"><%= package.donar.username %></h5>
+						<h5 class="mb-0">Donated By:- <%= package.donar.name %></h5>
 						<!-- Item Names and Quantities -->
 						<div class="d-flex justify-content-between mt-3">
 							<div>
 								<% for (let product of package.products) { %> <% if
 								(!product.expired) { %>
-								<p class="mb-1"><%= product.itemName %></p>
+								<p class="mb-1" style="font-size: 17px; font-weight: bold">
+									<%= product.itemName %>
+								</p>
 								<% } %> <% } %>
 							</div>
 							<div class="text-end">
 								<% for (let product of package.products) { %> <% if
 								(!product.expired) { %>
-								<p class="mb-1"><%= product.quantity %></p>
+								<p class="mb-1" style="font-size: 17px; font-weight: bold">
+									<%= product.quantity %>&nbsp;<span
+										class="mb-1"
+										style="color: lightcoral; font-size: 17px"
+									>
+										<%= product.timeLeft.hours %>Hrs <%=product.timeLeft.minutes
+										%>Min
+									</span>
+								</p>
 								<% } %> <% } %>
 							</div>
 						</div>
@@ -68,35 +78,38 @@
 
 				<!-- Overlay for Popup -->
 				<div id="popupOverlay<%=index%>" class="overlay"></div>
-				<% index++; %> <% }%> <% } %>
+				<% index++; %> <% }%> <% } %> <% } else{ %>
+				<div class="col-12">
+					<div class="card p-4 mb-3">
+						<h5 class="mb-1">Currently there are no Donations</h5>
+						<div class="text-end mt-3">
+							<a type="button" class="btn btn-success" href="/dashboard"
+								>Go Home!</a
+							>
+						</div>
+					</div>
+				</div>
+				<% } %>
 			</div>
 			<script src="/JS/recieve.js"></script>
 			<div class="col-md-6">
 				<div class="quick-stats">
 					<div class="card mb-3">
 						<div class="card-body">
-							<div>
-								<span>123</span>
-								<p>Total Donations</p>
+							<div class="inventorySpan">
+								<span>374</span>
+								<span>Total Donations</span>
 							</div>
-							<div>
-								<span>123kg</span>
-								<p>Food Saved</p>
+							<div class="inventorySpan">
+								<span>402kg</span>
+								<span>Food Saved</span>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<div class="card card-large mb-3">
+				<div class="card mb-3">
 					<div class="card-body">
 						<h5>Current Inventory</h5>
-						<div class="inventory-search mb-4">
-							<input
-								type="text"
-								class="form-control"
-								placeholder="Search inventory..."
-							/>
-						</div>
 						<table class="table w-190">
 							<thead>
 								<tr>
@@ -107,24 +120,18 @@
 								</tr>
 							</thead>
 							<tbody>
+								<%for(const products of package.products){ for(const product of
+								products){ if(!product.expired){%>
 								<tr>
-									<td>Fresh Vegetables</td>
-									<td>123 kg</td>
-									<td>Nov 20</td>
-									<td>1 day</td>
+									<td><%=product.itemName %></td>
+									<td><%=product.quantity %></td>
+									<td>date</td>
+									<td>
+										<%=product.timeLeft.hours %>Hrs <%=product.timeLeft.minutes
+										%>Min
+									</td>
 								</tr>
-								<tr>
-									<td>rice</td>
-									<td>100 bowl</td>
-									<td>Dec 15</td>
-									<td>5 hours</td>
-								</tr>
-								<tr>
-									<td>Bread</td>
-									<td>30 loaves</td>
-									<td>Nov 18</td>
-									<td>2 days</td>
-								</tr>
+								<% }}} %>
 							</tbody>
 						</table>
 					</div>
