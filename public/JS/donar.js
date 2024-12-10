@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
 			<hr />`;
+
 	}
 
 	// Event listener to generate rows based on the number input

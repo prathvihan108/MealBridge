@@ -76,6 +76,25 @@ label {
 	display: flex;
 	flex-direction: row-reverse;
 }
+/* Remove unwanted margins from form controls */
+.product-row .col-md-4 {
+	margin-bottom: 0 !important; /* No bottom margin for columns */
+}
+
+.product-row .form-control {
+	margin-bottom: 0px; /* Minimal spacing between inputs */
+}
+
+.product-row {
+	margin-bottom: 0px; /* Space after the entire row */
+}
+
+.custom-hr {
+	border: none;
+	height: 2px;
+	background: #000000; /* Customize color */
+	margin: 10px 0; /* Adjust spacing */
+}
 
 @media (max-width: 768px) {
 	/* .form-select {
