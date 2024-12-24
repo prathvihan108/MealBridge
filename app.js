@@ -1,6 +1,8 @@
+require("dotenv").config(); // Load the .env file
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 8080;
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
@@ -11,7 +13,7 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const LocalStrategy = require("passport-local");
 
-const mongo_url = "mongodb://127.0.0.1:27017/MealBridge";
+const mongo_url = process.env.MONGO_URL;
 const User = require("./models/user.js");
 const ExpressError = require("./utils/ExpressError.js");
 const userRouter = require("./routes/user.js");
@@ -105,6 +107,6 @@ app.use((err, req, res, next) => {
 	res.status(statusCode).render("ErrorPage/Error.ejs", { message, statusCode });
 });
 
-app.listen(8080, "0.0.0.0", () => {
+app.listen(port, "0.0.0.0", () => {
 	console.log("MealBridge Listening {Port: 8080}");
 });
