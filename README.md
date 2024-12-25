@@ -1,6 +1,5 @@
 # Meal Bridge
 
-XCiMFAOLuqhgHD2x
 
 ## Description
 
@@ -18,7 +17,7 @@ The primary aim of Meal Bridge is to minimize food wastage and promote food secu
 
 ## Live Link
 
-[Visit Meal Bridge Live](https://your-live-app-link.com)
+[Visit Meal Bridge Live](https://mealbridge-ls4r.onrender.com/)
 
 ## Features
 
