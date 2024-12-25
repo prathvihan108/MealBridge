@@ -5,15 +5,19 @@ if (process.env.NODE_ENV != "production") {
 
 module.exports.signUpFormRender = async (req, res) => {
 	res.render("users/signup.ejs");
+	console.log("signup form rendered successfully");
 };
 
 module.exports.signUp = async (req, res, next) => {
 	try {
 		let { name, password, username, email, phoneNo } = req.body;
 		let newUser = new User({ name, email, username, phoneNo });
+		console.log("User model instance created   successfull");
 		let registedUser = await User.register(newUser, password);
+		console.log("registration   successfull");
 		req.login(registedUser, (err) => {
 			if (err) {
+				console.log("error occured while registering");
 				return next(err);
 			}
 			req.flash("success", `Hi ${username} , Welcome To MealBridge!`);

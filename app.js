@@ -1,4 +1,6 @@
 require("dotenv").config(); // Load the .env file
+const setupLogging = require("./controllers/debugging.js"); // Import the setupLogging
+const { MongoClient, ServerApiVersion } = require("mongodb");
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
@@ -13,13 +15,12 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const LocalStrategy = require("passport-local");
 
-const mongo_url = process.env.MONGO_URL;
 const User = require("./models/user.js");
 const ExpressError = require("./utils/ExpressError.js");
 const userRouter = require("./routes/user.js");
 const fbRouter = require("./routes/foodBank.js");
 const { isLoggedIn } = require("./utils/Middlewares.js");
-const cron = require("node-cron");
+// const cron = require("node-cron");
 const markExpiredProducts = require("./utils/updateExpired.js");
 
 // // FROM HERE
@@ -34,7 +35,8 @@ const markExpiredProducts = require("./utils/updateExpired.js");
 // store.on("error", () => {
 // 	console.log("Mongo store Error", err);
 // }); // TO HERE comment this while working on local machine
-
+// Call the function to configure logging
+setupLogging(); //call the function
 const sessionOptions = {
 	// store, // comment this line for hosting from the local machine
 	// secret: process.env.SESSION_SECRET_KEY,
@@ -70,14 +72,15 @@ main()
 	.then(() => {
 		console.log("Mongo DB Connection Successful");
 	})
-	.catch((err) => console.log(err));
+	.catch((err) => console.log(err + "error connecting to mongo db server"));
 
-cron.schedule("*/2 * * * *", async () => {
-	console.log("Running daily expiration check...");
-	await markExpiredProducts();
-});
+// cron.schedule("*/2 * * * *", async () => {
+// 	console.log("Running daily expiration check...");
+// 	await markExpiredProducts();
+// });
 
 async function main() {
+	const mongo_url = process.env.MONGO_URL;
 	await mongoose.connect(mongo_url);
 }
 app.use((req, res, next) => {
