@@ -18,6 +18,7 @@ The primary aim of Meal Bridge is to minimize food wastage and promote food secu
 ## Live Link
 
 [Visit Meal Bridge Live](https://mealbridge-ls4r.onrender.com/)
+(Initially takes about 1 min to wake up the server from sleep mode.)
 
 ## Features
 
@@ -49,7 +50,7 @@ The primary aim of Meal Bridge is to minimize food wastage and promote food secu
    ```
 4. Start the server:
    ```bash
-   nodemon app.js
+   npm start
    ```
 5. Environment Variables:
 
@@ -60,6 +61,9 @@ The primary aim of Meal Bridge is to minimize food wastage and promote food secu
   EMAIL_USER=sender-email-id
   EMAIL_PASS=app_password_(Set up and generate the app password for the sender-email)
   MAP_TOKEN=maxbox_maptoken(generate a map token from mapbox website)
+  MONGO_URL=your_mongo_db_server_url(local or cloud)
+  NODE_ENV=development
+  DISABLE_LOGS=false 
 ```
 
 ## Contributing
